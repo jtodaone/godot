@@ -1204,6 +1204,8 @@ void RasterizerCanvasGLES3::_record_item_commands(const Item *p_item, RID p_rend
 				if (current_clip) {
 					if (ci->ignore != reclip) {
 						_new_batch(r_batch_broken);
+						state.canvas_instance_batches[state.current_batch_index].command = c;
+						state.canvas_instance_batches[state.current_batch_index].command_type = Item::Command::TYPE_CLIP_IGNORE;
 						if (ci->ignore) {
 							state.canvas_instance_batches[state.current_batch_index].clip = nullptr;
 							reclip = true;
